@@ -1,0 +1,5 @@
+module GrinWalletFFI {
+    header "grin_wallet_ffi.h"
+    link "grin_wallet_ffi"
+    export *
+}

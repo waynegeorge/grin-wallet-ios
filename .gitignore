@@ -1,0 +1,19 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+
+# macOS
+.DS_Store
+*.swp
+*~
+
+# Rust build artifacts
+grin-wallet-ffi/target/
+
+# Media
+*.mov
+*.mp4

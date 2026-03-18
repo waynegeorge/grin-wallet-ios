@@ -1,0 +1,24 @@
+[package]
+name = "grin_wallet_ffi"
+version = "5.4.0-alpha.1"
+description = "C-callable FFI layer for the Grin wallet (standalone, does not modify grin-wallet)"
+license = "Apache-2.0"
+edition = "2018"
+
+[lib]
+name = "grin_wallet_ffi"
+crate-type = ["cdylib", "staticlib"]
+
+[dependencies]
+serde_json = "1"
+uuid = { version = "0.8", features = ["serde", "v4"] }
+
+grin_wallet_api = { git = "https://github.com/mimblewimble/grin-wallet", tag = "v5.4.0-alpha.1" }
+grin_wallet_impls = { git = "https://github.com/mimblewimble/grin-wallet", tag = "v5.4.0-alpha.1" }
+grin_wallet_libwallet = { git = "https://github.com/mimblewimble/grin-wallet", tag = "v5.4.0-alpha.1" }
+grin_wallet_config = { git = "https://github.com/mimblewimble/grin-wallet", tag = "v5.4.0-alpha.1" }
+grin_wallet_util = { git = "https://github.com/mimblewimble/grin-wallet", tag = "v5.4.0-alpha.1" }
+
+grin_core = "5.3.3"
+grin_keychain = "5.3.3"
+grin_util = "5.3.3"
