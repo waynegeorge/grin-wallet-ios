@@ -35,6 +35,13 @@ enum NodeCheckStatus: Equatable {
     }
 }
 
+private enum SettingsDestination: Hashable {
+    case decimalPlaces
+    case sendShortcuts
+    case outputs
+    case splitOutputs
+}
+
 struct SettingsView: View {
     @Bindable var settings: AppSettings
     var walletService: WalletService?
@@ -109,9 +116,7 @@ struct SettingsView: View {
                         }
                     }
 
-                    NavigationLink {
-                        DecimalPlacesView(settings: settings)
-                    } label: {
+                    NavigationLink(value: SettingsDestination.decimalPlaces) {
                         HStack {
                             Label("Decimal Places", systemImage: "number")
                                 .foregroundStyle(.primary)
@@ -121,9 +126,7 @@ struct SettingsView: View {
                         }
                     }
 
-                    NavigationLink {
-                        SendShortcutsView(settings: settings)
-                    } label: {
+                    NavigationLink(value: SettingsDestination.sendShortcuts) {
                         Label("Send Shortcuts", systemImage: "bolt.fill")
                             .foregroundStyle(.primary)
                     }
@@ -329,17 +332,13 @@ struct SettingsView: View {
                             }
                         }
 
-                        if let walletService {
-                            NavigationLink {
-                                OutputsView(walletService: walletService, decimalPlaces: settings.grinDecimalPlaces)
-                            } label: {
+                        if walletService != nil {
+                            NavigationLink(value: SettingsDestination.outputs) {
                                 Label("Wallet Outputs", systemImage: "square.stack.3d.up")
                                     .foregroundStyle(.primary)
                             }
 
-                            NavigationLink {
-                                SplitOutputsView(walletService: walletService)
-                            } label: {
+                            NavigationLink(value: SettingsDestination.splitOutputs) {
                                 Label("Split Outputs", systemImage: "square.split.2x2")
                                     .foregroundStyle(.primary)
                             }
@@ -472,15 +471,15 @@ struct SettingsView: View {
 
                 // MARK: - About
                 Section("About") {
-                    LabeledContent("Version", value: "2.0.0")
-                    LabeledContent("Build", value: "1")
+                    LabeledContent("Version", value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "–")
+                    LabeledContent("Build", value: Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "–")
 
                     Link(destination: URL(string: "https://grin.mw")!) {
                         Label("Grin Website", systemImage: "globe")
                             .foregroundStyle(.primary)
                     }
 
-                    Link(destination: URL(string: "https://github.com/mimblewimble/grin")!) {
+                    Link(destination: URL(string: "https://github.com/waynegeorge/grin-wallet-ios")!) {
                         Label("GitHub", systemImage: "chevron.left.forwardslash.chevron.right")
                             .foregroundStyle(.primary)
                     }
@@ -506,6 +505,22 @@ struct SettingsView: View {
                             .font(.system(size: 10, design: .monospaced))
                             .foregroundStyle(.secondary)
                             .textSelection(.enabled)
+                    }
+                }
+            }
+            .navigationDestination(for: SettingsDestination.self) { destination in
+                switch destination {
+                case .decimalPlaces:
+                    DecimalPlacesView(settings: settings)
+                case .sendShortcuts:
+                    SendShortcutsView(settings: settings)
+                case .outputs:
+                    if let walletService {
+                        OutputsView(walletService: walletService, decimalPlaces: settings.grinDecimalPlaces)
+                    }
+                case .splitOutputs:
+                    if let walletService {
+                        SplitOutputsView(walletService: walletService)
                     }
                 }
             }

@@ -93,6 +93,8 @@ struct ContentView: View {
                     .onAppear { setupWalletService() }
             }
         }
+        .frame(maxWidth: 650)
+        .frame(maxWidth: .infinity)
         .onAppear {
             // Recover wallet state if UserDefaults were wiped but files exist
             walletStore.recoverIfNeeded()
