@@ -2,6 +2,13 @@
 
 A non-custodial iOS wallet for the [Grin](https://grin.mw) cryptocurrency, built on Mimblewimble — one of the most privacy-preserving, scalable blockchain protocols available.
 
+<img width="603" height="1311" alt="Screenshot 2026-09-09 at 21 27 05" src="https://github.com/user-attachments/assets/9a3bb7ee-3a6d-41d3-82b1-fe1ce79a5f75" />
+<img width="603" height="1311" alt="Screenshot 2026-09-09 at 21 27 23" src="https://github.com/user-attachments/assets/287e4a86-f270-4423-bbd5-c081ceb43306" />
+<img width="603" height="1311" alt="Screenshot 2026-09-09 at 21 27 37" src="https://github.com/user-attachments/assets/8b655b3b-54f2-4ef7-882b-c95f751afb09" />
+<img width="603" height="1311" alt="Screenshot 2026-09-09 at 21 27 55" src="https://github.com/user-attachments/assets/ced0fab9-57eb-4306-990b-004fa9bf503d" />
+<img width="603" height="1311" alt="Screenshot 2026-09-09 at 21 28 07" src="https://github.com/user-attachments/assets/6ccf57e5-c7d4-4724-969e-ef7a13b2c82e" />
+
+
 > **Disclaimer:** This software is provided as-is for educational and experimental purposes. It comes with no warranty of any kind. Use at your own risk. The authors accept no liability for lost funds or any other damages arising from the use of this software.
 
 ## Features
